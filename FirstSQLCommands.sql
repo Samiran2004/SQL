@@ -72,4 +72,35 @@ SELECT * FROM Customers;
 
 
 
+CREATE TABLE Sales(
+	SalesID INT AUTO_INCREMENT PRIMARY KEY,
+    Product VARCHAR(50),
+    Category VARCHAR(50),
+    Amount DECIMAL(10, 2),
+    SalesDate DATE
+);
+SELECT * FROM Sales;
+
+INSERT INTO Sales(Product, Category, Amount, SalesDate)
+VALUES
+('Pen', 'Stationary', 25.00, '2025-03-20'),
+('NoteBook', 'Stationary', 50.00, '2025-03-20'),
+('Mouse', 'Electronics', 500.00, '2025-04-10'),
+('Keyboard', 'Electronics', 670.00, '2025-04-10'),
+('Charger', 'Electronics', 300.00, '2025-04-12'),
+('bag', 'Accessories', 1000.00, '2025-04-15');
+SELECT * FROM Sales;
+
+SELECT COUNT(*) FROM Sales;
+SELECT SUM(Amount) FROM Sales;
+SELECT AVG(Amount) FROM Sales;
+SELECT MIN(Amount) FROM Sales;
+SELECT MAX(Amount) FROM Sales;
+SELECT MIN(Amount), MAX(Amount) FROM Sales;
+
+
+
+
+
+
 
