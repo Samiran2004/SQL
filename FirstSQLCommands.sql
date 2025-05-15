@@ -99,8 +99,60 @@ SELECT MAX(Amount) FROM Sales;
 SELECT MIN(Amount), MAX(Amount) FROM Sales;
 
 
+CREATE DATABASE IF NOT EXISTS RetailStore;
+USE RetailStore;
 
+CREATE TABLE Customers (
+	CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(100)
+);
 
+CREATE TABLE Orders (
+	OrderID INT PRIMARY KEY,
+    Product VARCHAR(100),
+    Amount DECIMAL(10,2),
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
 
+-- Customer Table
+INSERT INTO Customers VALUES
+(1, 'Rahul Sharma'),
+(2, 'Anjali Mehata'),
+(3, 'Amit Verma'),
+(4, 'Samiran Samanta');
+SELECT * FROM Customers;
 
+-- Orders Table
+INSERT INTO Orders VALUES
+(101, 'Laptop', 50000, 2),
+(102, 'Mouse', 500, 1),
+(103, 'Keyboard', 700, 1),
+(104, 'Monitor', 12000, NULL);
+SELECT * FROM Orders;
 
+-- Inner Join
+SELECT Customers.CustomerName, Orders.Product, Orders.Amount
+FROM Customers
+INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+
+-- Left Join
+SELECT Customers.CustomerName, Orders.Product, Orders.Amount
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+
+-- Right Join
+SELECT Customers.CustomerName, Orders.Product, Orders.Amount
+FROM Customers
+RIGHT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+
+-- Full Outer Join simulation using UNION of LEFT and RIGHT JOIN
+-- Left Join
+SELECT Customers.CustomerName, Orders.Product, Orders.Amount
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+UNION
+-- Right Join
+SELECT Customers.CustomerName, Orders.Product, Orders.Amount
+FROM Customers
+RIGHT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
