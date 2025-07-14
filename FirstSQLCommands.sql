@@ -46,3 +46,42 @@ SELECT id, name, email FROM users;
 SELECT id, name AS "User Name", status FROM users;
 
 SELECT id, name AS "User Name", email, status FROM users WHERE status = 1;
+
+
+CREATE TABLE students (
+	id INT NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    age TINYINT CHECK(age >= 18),
+    status BOOLEAN DEFAULT 1
+);
+
+INSERT INTO students
+(id, name, email, age)
+VALUES
+(1, 'Samiran', 'samiran123@gmail.com', 21);
+
+SELECT * FROM students;
+
+INSERT INTO students
+(id, name, email, age)
+VALUES
+(2, 'Zephyrus', 'zephyrus123@gmail.com', 31),
+(3, 'Guddu', 'guddu123@gmail.com', 22),
+(4, 'Jhon', 'jhon123@gmail.com', 25),
+(5, 'Delta', 'delta123@gmail.com', 28);
+
+SELECT * FROM students WHERE age >= 25 AND age < 30;
+
+SELECT * FROM students WHERE age = 21 OR age = 25;
+
+SELECT * FROM students WHERE age IN(19, 22, 21, 31);
+
+
+INSERT INTO students
+(id, name, email, age)
+VALUES
+(6, 'Deon', 'deon123@gmail.com', 23);
+
+SELECT * FROM students WHERE name LIKE('d%');
+SELECT * FROM students WHERE name LIKE('%n');
