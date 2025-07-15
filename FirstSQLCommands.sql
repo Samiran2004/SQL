@@ -85,3 +85,41 @@ VALUES
 
 SELECT * FROM students WHERE name LIKE('d%');
 SELECT * FROM students WHERE name LIKE('%n');
+
+
+SELECT * FROM students WHERE age BETWEEN 25 AND 30;
+SELECT * FROM students WHERE age NOT BETWEEN 25 AND 30;
+
+SELECT * FROM students ORDER BY name ASC;
+SELECT * FROM students ORDER BY name DESC;
+SELECT * FROM students ORDER BY age ASC;
+
+SELECT DISTINCT email FROM students;
+SELECT DISTINCT email FROM students ORDER BY email ASC;
+
+INSERT INTO students
+(id, name, email, age)
+VALUES
+(7, 'Sahil', 'sahil123@gmail.com', NULL);
+
+INSERT INTO students
+(id, name, email, age)
+VALUES
+(8, 'Sumit', 'sumit123@gmail.com', NULL);
+SELECT * FROM students;
+
+SELECT * FROM students WHERE age IS NULL;
+SELECT * FROM students WHERE age IS NOT NULL;
+
+SELECT * FROM students LIMIT 3;
+SELECT * FROM students ORDER BY name DESC LIMIT 3;
+
+
+SELECT COUNT(id) FROM students WHERE age > 25;
+SELECT SUM(status) FROM students;
+SELECT AVG(status) AS avgStatus FROM students;
+SELECT AVG(age) AS avgAge FROM students;
+SELECT MAX(age) AS maxAge FROM students;
+
+
+UPDATE students SET age = 20 WHERE id = 3;
